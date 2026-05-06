@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { createSlug } from "../../utils/createSlug";
 
 const Profile = () => {
-  const { blogs, handleDelete, handleEdit } = MyBlogContext();
+  const { blogs, deleteData, handleEdit } = MyBlogContext();
   const { user, handleLogout } = MyAuth();
 
   // console.log("user blog:", blog);
@@ -64,7 +64,7 @@ const Profile = () => {
                 <p>{item.content.slice(0, 150)}...</p>
                 <div className="flex items-center justify-start flex-row-reverse gap-5">
                   <button
-                    onClick={() => handleDelete(item.id)}
+                    onClick={() => deleteData(item.id)}
                     className=" text-black rounded-md py-1 text-xl hover:text-red-700 duration-300 dark:text-white dark:hover:text-red-500"
                   >
                     <BsTrash />

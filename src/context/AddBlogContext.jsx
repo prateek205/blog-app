@@ -66,13 +66,6 @@ export const AddBlogContext = ({ children }) => {
     closeModal();
   };
 
-  const handleDelete = (item) => {
-    if (!user) {
-      alert("Please Login First");
-      navigate("/login");
-    }
-  };
-
   const handleEdit = (item) => {
     if (!user) {
       alert("Please login first");
@@ -105,7 +98,7 @@ export const AddBlogContext = ({ children }) => {
         handleEdit,
         isEditOpen,
         closeModal,
-        handleDelete,
+        deleteData,
       }}
     >
       {children}

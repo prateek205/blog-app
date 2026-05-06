@@ -43,7 +43,7 @@ const useBlog = (url) => {
     const deleteItems = await fetch(`${url}/${id}`, {
       method: "DELETE",
     });
-    const updateData = blogs.filter((item) => item.id !== id) 
+    const updateData = data.filter((item) => item.id !== id) 
     setData(updateData);
   };
 
