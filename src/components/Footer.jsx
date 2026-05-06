@@ -3,7 +3,7 @@ import { FaHeart } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <section className="relative z-10 shadow-[0_0_20px_rgb(50,50,50)] dark:shadow-[0_0_20px_rgb(250,250,250)] dark:bg-gray-900 dark:text-white">
+    <section className="shadow-[0_0_20px_rgb(50,50,50)] dark:bg-gray-900 dark:text-white">
       <div className="h-10 w-full flex items-center justify-center">
         <h2 className="text-lg flex items-center gap-2">
           <FaHeart /> Prateek Bahad{" "}

@@ -22,7 +22,7 @@ const AllBlog = () => {
   };
 
   return (
-    <section className="h-screen">
+    <section className="h-screen dark:bg-gray-900 dark:text-white">
       <div className="h-full flex items-center justify-center">
         {displayBlog.length === 0 ? (
           <h2 className="text-2xl font-bold">No blog yet...</h2>
@@ -34,7 +34,7 @@ const AllBlog = () => {
               return (
                 <div
                   key={item.id}
-                  className="w-full h-full flex flex-col gap-5 px-5 py-6 rounded-md shadow-[0_0_10px_rgb(50,50,50)] dark:shadow-[0_0_10px_rgb(250,250,250)]"
+                  className="w-full h-full flex flex-col gap-5 px-5 py-6 rounded-md shadow-[0_0_10px_rgb(50,50,50)]"
                 >
                   <h2 className="text-xl font-bold">{item.title}</h2>
                   <p className="text-sm">{item.content.slice(0, 180)}...</p>

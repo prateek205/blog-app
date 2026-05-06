@@ -63,10 +63,10 @@ export const AddBlogContext = ({ children }) => {
     }
     setFormData(initialValue);
     navigate("/allBlog");
-    closeModal()
+    closeModal();
   };
 
-  const handleDelete = async (item) => {
+  const handleDelete = (item) => {
     if (!user) {
       alert("Please Login First");
       navigate("/login");

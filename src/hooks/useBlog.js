@@ -43,7 +43,8 @@ const useBlog = (url) => {
     const deleteItems = await fetch(`${url}/${id}`, {
       method: "DELETE",
     });
-    setData((prev) => prev.filter((item) => item.id !== id));
+    const updateData = blogs.filter((item) => item.id !== id) 
+    setData(updateData);
   };
 
   useEffect(() => {

@@ -48,7 +48,7 @@ const Profile = () => {
           </button>
         </div>
       </div>
-      <div className="p-5 w-full h-full shadow-[0_0_10px_rgb(50,50,50)] dark:shadow-[0_0_8px_rgb(250,250,250)] flex flex-col items-center justify-start gap-10 rounded-md">
+      <div className="px-5 w-full h-full shadow-[0_0_10px_rgb(50,50,50)] dark:shadow-[0_0_8px_rgb(250,250,250)] flex flex-col items-center justify-start gap-10 rounded-md">
         <h1 className="font-bold text-3xl">Recent Post</h1>
         <div className="grid grid-cols-3 gap-5 rounded-md">
           {filterPost.map((item, index) => {
@@ -64,7 +64,7 @@ const Profile = () => {
                 <p>{item.content.slice(0, 150)}...</p>
                 <div className="flex items-center justify-start flex-row-reverse gap-5">
                   <button
-                    onClick={() => handleDelete(item)}
+                    onClick={() => handleDelete(item.id)}
                     className=" text-black rounded-md py-1 text-xl hover:text-red-700 duration-300 dark:text-white dark:hover:text-red-500"
                   >
                     <BsTrash />
