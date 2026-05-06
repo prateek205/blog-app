@@ -22,7 +22,7 @@ const AllBlog = () => {
   };
 
   return (
-    <section className="h-screen dark:bg-gray-900 dark:text-white">
+    <section className="h-full dark:bg-gray-900 dark:text-white">
       <div className="h-full flex items-center justify-center">
         {displayBlog.length === 0 ? (
           <h2 className="text-2xl font-bold">No blog yet...</h2>

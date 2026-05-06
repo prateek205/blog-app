@@ -19,7 +19,7 @@ const Profile = () => {
   const postCount = filterPost.length;
 
   return (
-    <section className="p-10 h-screen w-full flex items-start justify-between gap-5 dark:bg-gray-900 dark:text-white">
+    <section className="p-10 h-full w-full flex items-start justify-between gap-5 dark:bg-gray-900 dark:text-white">
       <div className="w-1/3 h-full shadow-[0_0_10px_rgb(50,50,50)] dark:shadow-[0_0_10px_rgb(250,250,250)] rounded-md flex flex-col gap-10 px-5 py-7">
         <h1 className="text-4xl font-bold text-center">My Profile</h1>
         <div className="flex items-start flex-col gap-10 text-left">
@@ -48,7 +48,7 @@ const Profile = () => {
           </button>
         </div>
       </div>
-      <div className="px-5 w-full h-full shadow-[0_0_10px_rgb(50,50,50)] dark:shadow-[0_0_8px_rgb(250,250,250)] flex flex-col items-center justify-start gap-10 rounded-md">
+      <div className="px-5 py-6 w-full h-full shadow-[0_0_10px_rgb(50,50,50)] dark:shadow-[0_0_8px_rgb(250,250,250)] flex flex-col items-center justify-start gap-10 rounded-md">
         <h1 className="font-bold text-3xl">Recent Post</h1>
         <div className="grid grid-cols-3 gap-5 rounded-md">
           {filterPost.map((item, index) => {
