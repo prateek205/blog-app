@@ -53,6 +53,14 @@
       "userId": 1,
       "slug": "whatisjavascript",
       "id": 8
+    },
+    {
+      "title": "Green Web: How to Reduce Your Digital Footprint",
+      "content": "Every kilobyte transferred has a carbon cost. Discover how optimizing your assets and choosing green hosting providers can contribute to a more sustainable internet while simultaneously improving your SEO and page speed.",
+      "tag": "Eco-Friendly, WebPerf, Efficiency",
+      "userId": 1,
+      "slug": "greenwebhowtoreduceyourdigitalfootprint",
+      "id": 9
     }
   ]
 }

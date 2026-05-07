@@ -29,6 +29,13 @@ const EditPage = () => {
             onChange={handleChange}
             className="py-2 px-3 outline-none rounded-md"
           />
+          <input
+            type="text"
+            name="tags"
+            value={formData.tags}
+            onChange={handleChange}
+            className="py-2 px-3 outline-none rounded-md"
+          />
           <textarea
             cols="80"
             rows="20"
