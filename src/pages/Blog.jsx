@@ -38,8 +38,8 @@ const Blog = () => {
             className="text-lg py-2 px-2 outline-none bg-transparent border-2 border-gray-300 dark:border-2 dark:border-gray-600 rounded-md"
             type="text"
             placeholder="React, Web Development, HTML, CSS"
-            name="tag"
-            value={formData.tag}
+            name="tags"
+            value={formData.tags}
             onChange={handleChange}
           />
           <label className="text-xl flex items-center gap-2">

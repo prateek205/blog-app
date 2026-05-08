@@ -18,12 +18,12 @@ const BlogDetails = () => {
     <section className="h-screen flex items-start justify-center p-10 dark:bg-gray-900 dark:text-white ">
       <div className="flex flex-col gap-5">
         <h1 className="text-4xl font-bold">{blogItem.title}</h1>
+        <p className="text-sm leading-7">{blogItem.content}</p>
         <div>
           {blogItem.tags?.map((item, index) => {
-            <span key={index}>#{item}</span>;
+            return <span key={index}>#{item} </span>;
           })}
         </div>
-        <p className="text-sm leading-7">{blogItem.content}</p>
       </div>
     </section>
   );

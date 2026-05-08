@@ -9,7 +9,7 @@ export const BlogContext = createContext();
 export const AddBlogContext = ({ children }) => {
   const { user } = MyAuth();
 
-  const initialValue = { title: "", tags: [], content: "" };
+  const initialValue = { title: "", tags: "", content: "" };
 
   const [formData, setFormData] = useState(initialValue);
   const [editData, setEditData] = useState(null);
@@ -52,6 +52,11 @@ export const AddBlogContext = ({ children }) => {
     const newBlog = {
       ...formData,
 
+      tags: formData.tags
+        .split(",")
+        .map((tag) => tag.trim())
+        .filter((tag) => tag !== ""),
+
       userId: user.id,
       slug: createSlug(formData.title),
     };
@@ -75,6 +80,7 @@ export const AddBlogContext = ({ children }) => {
 
     setFormData({
       title: item.title,
+      tags: item.tags?.join(", ") || "",
       content: item.content,
     });
 
