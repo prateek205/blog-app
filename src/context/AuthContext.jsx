@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect } from "react";
 import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -19,20 +20,18 @@ export const AuthContext = ({ children }) => {
   const register = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:5000/users", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
+    try {
+      const response = await axios.post("http://localhost:5000/users", form);
 
-    const data = await response.json();
-    console.log("data added:", data);
+      console.log("Data Added:", response.data);
+      alert("Register Successfully!!!");
 
-    if (response.ok) {
-      alert("Register is Successfully!!!");
+      setForm({ name: "", email: "", password: "" });
+
       navigate("/login");
-    } else {
-      alert("Register is Failed!!");
+    } catch (error) {
+      console.log(error);
+      alert("Register Failed!!");
     }
   };
 
@@ -46,19 +45,25 @@ export const AuthContext = ({ children }) => {
   const login = async (e) => {
     e.preventDefault();
 
-    const res = await fetch(
-      `http://localhost:5000/users?email=${email}&password=${password}`,
-    );
-    const users = await res.json();
-    // console.log("user Data:", users);
+    try {
+      const res = await axios.get(
+        `http://localhost:5000/users?email=${email}&password=${password}`,
+      );
+      const users = res.data;
 
-    if (users.length > 0) {
-      localStorage.setItem("user", JSON.stringify(users[0]));
-      setUser(users[0]);
+      if (users.length > 0) {
+        localStorage.setItem("user", JSON.stringify(users[0]));
+        setUser(users[0]);
 
-      navigate("/");
-    } else {
-      alert("invalid credientials");
+        console.log("Login Successfully!!!")
+
+        navigate("/");
+      } else {
+        alert("invalid credientials");
+      }
+    } catch (error) {
+      console.log(error);
+      alert("Login Failed");
     }
   };
 

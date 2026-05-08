@@ -6,7 +6,7 @@ const BlogDetails = () => {
   const { id, slug } = useParams();
   const { blogs } = MyBlogContext();
 
-  console.log("blogs:", blogs);
+  // console.log("blogs:", blogs);
 
   const blogItem = blogs?.find((items) => items.id == id);
 

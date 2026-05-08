@@ -6,8 +6,6 @@ const EditPage = () => {
   const { isEditOpen, closeModal, formData, handleChange, handleSubmit } =
     MyBlogContext();
 
-  console.log("form data", formData);
-
   if (!isEditOpen) return null;
 
   return (

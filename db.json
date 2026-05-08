@@ -11,6 +11,12 @@
       "email": "raj@gmail.com",
       "password": "Raj@123",
       "id": 2
+    },
+    {
+      "username": "Xyz",
+      "email": "xyz@gmail.com",
+      "password": "xyz@123",
+      "id": 3
     }
   ],
   "blogs": [
@@ -61,6 +67,15 @@
       "userId": 1,
       "slug": "greenwebhowtoreduceyourdigitalfootprint",
       "id": 9
+    },
+    {
+      "title": "Web Development in 2026: Trends You Can't Ignore",
+      "tags": [],
+      "content": "Explore the top web development trends of 2026, from AI-driven workflows and edge computing to the latest in responsive design.",
+      "tag": "Web Development, React js",
+      "userId": 3,
+      "slug": "webdevelopmentin2026trendsyoucantignore",
+      "id": 10
     }
   ]
 }

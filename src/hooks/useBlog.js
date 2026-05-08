@@ -8,7 +8,7 @@ const useBlog = (url) => {
     const res = await fetch(url);
     const data = await res.json();
     setData(data);
-    console.log("Data:", data);
+    // console.log("Data:", data);
   };
 
   // POST DATA
@@ -21,7 +21,7 @@ const useBlog = (url) => {
     });
 
     const data = await response.json();
-    console.log("New Data:", data);
+    // console.log("New Data:", data);
     setData((prev) => [...prev, data]);
   };
 

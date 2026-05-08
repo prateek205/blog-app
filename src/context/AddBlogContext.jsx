@@ -52,8 +52,6 @@ export const AddBlogContext = ({ children }) => {
     const newBlog = {
       ...formData,
 
-      tags: formData.tags.split(",").map((item) => item.trim()),
-
       userId: user.id,
       slug: createSlug(formData.title),
     };
@@ -77,7 +75,6 @@ export const AddBlogContext = ({ children }) => {
 
     setFormData({
       title: item.title,
-      tags: item.tags?item.tags.join(", "): "",
       content: item.content,
     });
 
