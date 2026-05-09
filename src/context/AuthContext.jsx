@@ -26,7 +26,7 @@ export const AuthContext = ({ children }) => {
       console.log("Data Added:", response.data);
       alert("Register Successfully!!!");
 
-      setForm({ name: "", email: "", password: "" });
+      setForm({ username: "", email: "", password: "" });
 
       navigate("/login");
     } catch (error) {

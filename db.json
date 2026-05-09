@@ -1,4 +1,22 @@
 {
-  "users": [],
-  "blogs": []
+  "users": [
+    {
+      "username": "Tech_Surya",
+      "email": "ts@gmail.com",
+      "password": "ts@123",
+      "id": 1
+    }
+  ],
+  "blogs": [
+    {
+      "title": "Beyond Burnout: 5 Sustainable Work Habits for 2026",
+      "tags": [
+        "Productivity2026"
+      ],
+      "content": "It’s May 2026, and the \"hustle culture\" of the early 2020s has officially evolved. We've moved past simple time management into energy management. If you're feeling overstimulated by constant notifications and AI-driven workflows, you aren't alone.Here are five habits to help you reclaim your focus this year:1. The \"Analog Hour\" Morning RoutineBefore you touch a screen, give yourself 60 minutes of analog time. Whether it's physical journaling, reading a paper book, or microgardening, this prevents your brain from starting the day in a reactive state.2. Leveraging AI for \"Deep Thinking,\" Not Just \"Doing\"Instead of using AI to just churn out text, use it to brainstorm counter-arguments to your ideas. This shifts your role from a \"content machine\" to a critical thinker.3. Smart Ergonomics on a BudgetYou don't need a $2,000 chair. Focus on multifunctional furniture and standing desk converters that fit small spaces—perfect for the growing demographic of remote professionals.",
+      "userid": 1,
+      "slug": "beyondburnout5sustainableworkhabitsfor2026",
+      "id": 1
+    }
+  ]
 }

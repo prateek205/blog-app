@@ -6,7 +6,7 @@ const BlogDetails = () => {
   const { id, slug } = useParams();
   const { blogs } = MyBlogContext();
 
-  // console.log("blogs:", blogs);
+  console.log("blogs:", blogs);
 
   const blogItem = blogs?.find((items) => items.id == id);
 
@@ -15,13 +15,22 @@ const BlogDetails = () => {
   }
 
   return (
-    <section className="h-screen flex items-start justify-center p-10 dark:bg-gray-900 dark:text-white ">
+    <section className="h-full flex items-start justify-center p-10 dark:bg-gray-900 dark:text-white ">
       <div className="flex flex-col gap-5">
-        <h1 className="text-4xl font-bold">{blogItem.title}</h1>
-        <p className="text-sm leading-7">{blogItem.content}</p>
-        <div>
-          {blogItem.tags?.map((item, index) => {
-            return <span key={index}>#{item} </span>;
+        <h1 className="text-4xl font-bold">{blogItem?.title}</h1>
+        <p className="text-sm leading-7 whitespace-pre-line">
+          {blogItem?.content}
+        </p>
+        <div className="flex gap-2 text-sm flex-wrap justify-center">
+          {blogItem?.tags?.map((item, index) => {
+            return (
+              <div
+                key={index}
+                className="py-1 px-3 rounded-md bg-blue-300 text-blue-500"
+              >
+                #{item}{" "}
+              </div>
+            );
           })}
         </div>
       </div>

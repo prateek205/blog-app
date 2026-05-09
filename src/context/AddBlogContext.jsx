@@ -56,8 +56,7 @@ export const AddBlogContext = ({ children }) => {
         .split(",")
         .map((tag) => tag.trim())
         .filter((tag) => tag !== ""),
-
-      userId: user.id,
+      userId:user.id,
       slug: createSlug(formData.title),
     };
 
