@@ -19,10 +19,10 @@ const BlogDetails = () => {
       <div className="flex flex-col gap-5">
         <h1 className="text-4xl font-bold">{blogItem?.title}</h1>
         <p className="text-sm leading-7 whitespace-pre-line">
-          {blogItem?.content}
+          {blogItem.content}
         </p>
         <div className="flex gap-2 text-sm flex-wrap justify-center">
-          {blogItem?.tags?.map((item, index) => {
+          {blogItem.tags.map((item, index) => {
             return (
               <div
                 key={index}
