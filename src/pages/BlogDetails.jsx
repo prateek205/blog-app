@@ -23,9 +23,33 @@ const BlogDetails = () => {
           className="w-full h-96 object-cover rounded-md"
         />
         <h1 className="text-4xl font-bold">{blogItem?.title}</h1>
-        <p className="text-sm leading-7 whitespace-pre-line">
-          {blogItem.content}
-        </p>
+        <div className="text-sm leading-7 whitespace-pre-line">
+          {blogItem.content.split("\n").map((line, index) => {
+            const trimLine = line.trim();
+            const isMainHeading =
+              trimLine.endsWith("?") ||
+              trimLine === "Introduction" ||
+              trimLine === "Conclusion" ||
+              trimLine.includes("Step", ".") ||
+              /^\d+\./.test(trimLine);
+
+            const isSubHeading = trimLine.endsWith(":");
+
+            return isMainHeading ? (
+              <h2 key={index} className="text-2xl font-bold">
+                {trimLine}
+              </h2>
+            ) : isSubHeading ? (
+              <h3 key={index} className="font-bold">
+                {trimLine}
+              </h3>
+            ) : (
+              <p key={index} className="ml-5 text-sm leading-10">
+                {trimLine}
+              </p>
+            );
+          })}
+        </div>
         <div className="flex gap-2 text-sm flex-wrap justify-start">
           {blogItem.tags.map((item, index) => {
             return (

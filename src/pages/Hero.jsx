@@ -25,7 +25,11 @@ const Hero = () => {
     <section className="relative z-10 h-full flex items-start justify-center bg-white dark:bg-gray-900 text-black dark:text-white duration-300">
       <div className="flex flex-col gap-10">
         <div>
-          <img src="./heroBanner.jpg" alt="" className="object-cover" />
+          <img
+            src="./heroBanner.jpg"
+            alt=""
+            className="h-96 w-full object-cover object-center pt-5"
+          />
         </div>
 
         <h1 className="text-4xl text-center">Featured Blog</h1>
@@ -55,11 +59,10 @@ const Hero = () => {
                       className="w-full h-full object-cover rounded-md"
                     />
                     <h2 className="text-xl font-bold">{item.title}</h2>
-                    <p className="text-sm">{item.content.slice(0, 180)}...</p>
                     <div className="flex items-end justify-between flex-row-reverse">
                       <Link to={`/blogDetails/${item.id}/${slug}`}>
                         <button className="text-blue-500 hover:scale-105 flex items-center justify-center gap-2 text-left hover:underline underline-offset-2 duration-300">
-                          <p>Read More </p>
+                          <p>View </p>
                           <FaArrowRight />
                         </button>
                       </Link>
