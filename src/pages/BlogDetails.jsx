@@ -17,11 +17,16 @@ const BlogDetails = () => {
   return (
     <section className="h-full flex items-start justify-center p-10 dark:bg-gray-900 dark:text-white ">
       <div className="flex flex-col gap-5">
+        <img
+          src={blogItem.image}
+          alt=""
+          className="w-full h-96 object-cover rounded-md"
+        />
         <h1 className="text-4xl font-bold">{blogItem?.title}</h1>
         <p className="text-sm leading-7 whitespace-pre-line">
           {blogItem.content}
         </p>
-        <div className="flex gap-2 text-sm flex-wrap justify-center">
+        <div className="flex gap-2 text-sm flex-wrap justify-start">
           {blogItem.tags.map((item, index) => {
             return (
               <div
@@ -32,6 +37,16 @@ const BlogDetails = () => {
               </div>
             );
           })}
+        </div>
+        <div className="flex flex-col gap-2 justify-between">
+          <h2 className="text-sm font-bold">
+            Author:{" "}
+            <span className="font-normal">{blogItem.username}</span>{" "}
+          </h2>
+          <p className="text-sm font-bold">
+            CreatedAt:{" "}
+            <span className="font-normal">{blogItem.createdAt}</span>{" "}
+          </p>
         </div>
       </div>
     </section>

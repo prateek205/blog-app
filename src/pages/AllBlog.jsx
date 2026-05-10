@@ -22,8 +22,8 @@ const AllBlog = () => {
   };
 
   return (
-    <section className="h-full dark:bg-gray-900 dark:text-white">
-      <div className="h-full flex items-center justify-center">
+    <section className="h-screen dark:bg-gray-900 dark:text-white">
+      <div className="h-full flex items-start justify-center">
         {displayBlog.length === 0 ? (
           <h2 className="text-2xl font-bold">No blog yet...</h2>
         ) : (
@@ -32,19 +32,38 @@ const AllBlog = () => {
               const isExpanded = isExpandedId === item.id;
               const slug = item.slug || createSlug(item.title);
               return (
-                <div
-                  key={item.id}
-                  className="w-full h-full flex flex-col gap-5 px-5 py-6 rounded-md shadow-[0_0_10px_rgb(50,50,50)]"
-                >
-                  <h2 className="text-xl font-bold">{item.title}</h2>
-                  <p className="text-sm">{item.content.slice(0, 180)}...</p>
-                  <Link to={`/blogDetails/${item.id}/${slug}`}>
-                    <button className="text-blue-500 hover:scale-105 flex items-center justify-center gap-2 text-left hover:underline underline-offset-2 duration-300">
-                      <p>Read More </p>
-                      <FaArrowRight />
-                    </button>
-                  </Link>
-                </div>
+                <>
+                  <div
+                    key={item.id}
+                    className="w-full h-full flex flex-col gap-5 px-5 py-6 rounded-md shadow-[0_0_10px_rgb(50,50,50)]"
+                  >
+                    <img
+                      src={item.image}
+                      alt=""
+                      className="w-full h-full object-cover rounded-md"
+                    />
+                    <h2 className="text-xl font-bold">{item.title}</h2>
+                    <p className="text-sm">{item.content.slice(0, 180)}...</p>
+                    <div className="flex items-end justify-between flex-row-reverse">
+                      <Link to={`/blogDetails/${item.id}/${slug}`}>
+                        <button className="text-blue-500 hover:scale-105 flex items-center justify-center gap-2 text-left hover:underline underline-offset-2 duration-300">
+                          <p>Read More </p>
+                          <FaArrowRight />
+                        </button>
+                      </Link>
+                      <div className="flex flex-col gap-2 items-start justify-between">
+                        <h2 className="text-sm font-bold">
+                          Author:{" "}
+                          <span className="font-normal">{item.username}</span>
+                        </h2>
+                        <p className="text-sm font-bold">
+                          CreatedAt:{" "}
+                          <span className="font-normal">{item.createdAt}</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </>
               );
             })}
           </div>

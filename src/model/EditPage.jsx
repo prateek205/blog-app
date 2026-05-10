@@ -22,6 +22,13 @@ const EditPage = () => {
         >
           <input
             type="text"
+            name="image"
+            value={formData.image}
+            onChange={handleChange}
+            className="py-2 px-3 outline-none rounded-md"
+          />
+          <input
+            type="text"
             name="title"
             value={formData.title}
             onChange={handleChange}

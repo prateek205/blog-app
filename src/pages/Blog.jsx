@@ -1,7 +1,7 @@
 import React from "react";
 import { BsTrash } from "react-icons/bs";
 import { MyBlogContext } from "../context/AddBlogContext";
-import { FaBlog, FaHashtag } from "react-icons/fa";
+import { FaBlog, FaHashtag, FaImage } from "react-icons/fa";
 import { MdContentPaste } from "react-icons/md";
 import { FiSend } from "react-icons/fi";
 
@@ -19,6 +19,18 @@ const Blog = () => {
           <p className="text-lg">Share your thought with world!!</p>
         </div>
         <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+          <label className="text-xl flex items-center gap-2">
+            <FaImage />
+            Blog Image
+          </label>
+          <input
+            className="text-lg py-2 px-2 outline-none bg-transparent border-2 border-gray-300 dark:border-2 dark:border-gray-600 rounded-md"
+            type="text"
+            placeholder="Image URL"
+            name="image"
+            value={formData.image}
+            onChange={handleChange}
+          />
           <label className="text-xl flex items-center gap-2">
             <FaBlog />
             Blog Title

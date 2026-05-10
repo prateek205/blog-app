@@ -48,38 +48,63 @@ const Profile = () => {
           </button>
         </div>
       </div>
-      <div className="px-5 py-6 w-full h-full shadow-[0_0_10px_rgb(50,50,50)] dark:shadow-[0_0_8px_rgb(250,250,250)] flex flex-col items-center justify-start gap-10 rounded-md">
+      <div className="px-5 py-6 w-full h-screen shadow-[0_0_10px_rgb(50,50,50)] dark:shadow-[0_0_8px_rgb(250,250,250)] flex flex-col items-center justify-start gap-10 rounded-md">
         <h1 className="font-bold text-3xl">Recent Post</h1>
-        <div className="grid grid-cols-3 gap-5 rounded-md">
-          {filterPost.map((item, index) => {
-            const slug = item.slug || createSlug(item.title);
-            return (
-              <div
-                key={index}
-                className="shadow-[0_0_10px_rgb(50,50,50)] p-5 flex flex-col gap-2 rounded-md dark:shadow-[0_0_8px_rgb(250,250,250)]"
-              >
-                <Link to={`/blogDetails/${item.id}/${slug}`}>
-                  <h1 className="font-bold">{item.title}</h1>
-                </Link>
-                <p>{item.content.slice(0, 150)}...</p>
-                <div className="flex items-center justify-start flex-row-reverse gap-5">
-                  <button
-                    onClick={() => deleteData(item.id)}
-                    className=" text-black rounded-md py-1 text-xl hover:text-red-700 duration-300 dark:text-white dark:hover:text-red-500"
-                  >
-                    <BsTrash />
-                  </button>
-                  <button
-                    onClick={() => handleEdit(item)}
-                    className="text-black rounded-md py-1 text-xl hover:text-orange-500 duration-300 dark:text-white dark:hover:text-red-500"
-                  >
-                    <FaEdit />
-                  </button>
+        {filterPost.length === 0 ? (
+          <h2 className="flex items-center justify-center h-full w-full">
+            No Recent Blog....
+          </h2>
+        ) : (
+          <div className="grid grid-cols-3 gap-5 rounded-md">
+            {filterPost.map((item, index) => {
+              const slug = item.slug || createSlug(item.title);
+              return (
+                <div
+                  key={index}
+                  className="shadow-[0_0_10px_rgb(50,50,50)] p-5 flex flex-col gap-2 rounded-md dark:shadow-[0_0_8px_rgb(250,250,250)]"
+                >
+                  <img
+                    src={item.image}
+                    alt=""
+                    className="w-full h-full object-cover rounded-md"
+                  />
+                  <Link to={`/blogDetails/${item.id}/${slug}`}>
+                    <h1 className="font-bold">{item.title}</h1>
+                  </Link>
+                  <p className="text-sm">
+                    {item.content.slice(0, 150)}...
+                  </p>
+                  <div className="flex items-end justify-between flex-row-reverse">
+                    <div className="flex items-center justify-start flex-row-reverse gap-2">
+                      <button
+                        onClick={() => deleteData(item.id)}
+                        className=" text-black rounded-md py-1 text-xl hover:text-red-700 duration-300 dark:text-white dark:hover:text-red-500"
+                      >
+                        <BsTrash />
+                      </button>
+                      <button
+                        onClick={() => handleEdit(item)}
+                        className="text-black rounded-md py-1 text-xl hover:text-orange-500 duration-300 dark:text-white dark:hover:text-red-500"
+                      >
+                        <FaEdit />
+                      </button>
+                    </div>
+                    <div className="flex flex-col gap-2 items-start justify-between">
+                      <h2 className="text-sm font-bold">
+                        Author:{" "}
+                        <span className="font-normal">{item.username}</span>
+                      </h2>
+                      <p className="text-sm font-bold">
+                        CreatedAt:{" "}
+                        <span className="font-normal">{item.createdAt}</span>
+                      </p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        )}
       </div>
     </section>
   );
