@@ -19,92 +19,153 @@ const Profile = () => {
   const postCount = filterPost.length;
 
   return (
-    <section className="p-10 h-full w-full flex items-start justify-between gap-5 dark:bg-gray-900 dark:text-white">
-      <div className="w-1/3 h-full shadow-[0_0_10px_rgb(50,50,50)] dark:shadow-[0_0_10px_rgb(250,250,250)] rounded-md flex flex-col gap-10 px-5 py-7">
-        <h1 className="text-4xl font-bold text-center">My Profile</h1>
-        <div className="flex items-start flex-col gap-10 text-left">
-          <h1 className="text-lg font-bold">
-            Username :{" "}
-            <span className="font-normal">{user?.username}</span>{" "}
+    <section className="min-h-screen bg-slate-50 text-slate-900 dark:bg-gray-900 dark:text-gray-100 p-4 sm:p-8 transition-colors duration-300">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 items-start justify-between">
+        {/* Profile Sidebar */}
+        <aside className="w-full lg:w-80 bg-white dark:bg-gray-800 border border-slate-100 dark:border-gray-700/60 rounded-2xl p-6 shadow-sm flex flex-col gap-6 shrink-0">
+          <h1 className="text-2xl font-extrabold tracking-tight border-b border-slate-100 dark:border-gray-700 pb-4 text-center lg:text-left">
+            My Profile
           </h1>
-          <h2 className="text-lg font-bold">
-            Email : <span className="font-normal">{user?.email}</span>{" "}
-          </h2>
-          <p className="text-lg font-bold">
-            Password :{" "}
-            <span className="font-normal">
-              {"*".repeat(user?.password?.length)}
-            </span>{" "}
-          </p>
-          <p className="text-lg font-bold">
-            Total Post :{" "}
-            <span className="font-normal">{postCount} Post</span>{" "}
-          </p>
+
+          <div className="flex flex-col gap-4 text-sm">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-gray-500 mb-0.5">
+                Username
+              </p>
+              <p className="font-medium text-slate-800 dark:text-gray-200">
+                {user?.username || "N/A"}
+              </p>
+            </div>
+
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-gray-500 mb-0.5">
+                Email Address
+              </p>
+              <p className="font-medium text-slate-800 dark:text-gray-200 truncate">
+                {user?.email || "N/A"}
+              </p>
+            </div>
+
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-gray-500 mb-0.5">
+                Password
+              </p>
+              <p className="font-medium text-slate-600 dark:text-gray-400 tracking-widest">
+                {user?.password
+                  ? "*".repeat(Math.min(user.password.length, 12))
+                  : "********"}
+              </p>
+            </div>
+
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-gray-500 mb-0.5">
+                Total Contributions
+              </p>
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-700 dark:bg-blue-950/40 dark:text-blue-400">
+                {postCount || 0} {postCount === 1 ? "Post" : "Posts"}
+              </span>
+            </div>
+          </div>
+
           <button
             onClick={handleLogout}
-            className="bg-gray-500 hover:bg-gray-400 hover:text-white duration-200 rounded-md py-1 w-1/2 dark:shadow-[0_0_5px_rgb(250,250,250)] dark:bg-gray-900 dark:hover:bg-gray-800 dark:text-white"
+            className="w-full mt-2 bg-slate-100 hover:bg-red-50 text-slate-700 hover:text-red-600 dark:bg-gray-700 dark:hover:bg-red-950/30 dark:text-gray-200 dark:hover:text-red-400 py-2.5 px-4 rounded-xl font-semibold text-sm transition-all duration-200 cursor-pointer active:scale-[0.98]"
           >
-            Logout
+            Logout Account
           </button>
-        </div>
-      </div>
-      <div className="px-5 py-6 w-full h-screen shadow-[0_0_10px_rgb(50,50,50)] dark:shadow-[0_0_8px_rgb(250,250,250)] flex flex-col items-center justify-start gap-10 rounded-md">
-        <h1 className="font-bold text-3xl">Recent Post</h1>
-        {filterPost.length === 0 ? (
-          <h2 className="flex items-center justify-center h-full w-full">
-            No Recent Blog....
+        </aside>
+
+        {/* Recent Posts Workspace Container */}
+        <main className="w-full flex-1 bg-white dark:bg-gray-800 border border-slate-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8 shadow-sm min-h-[600px] flex flex-col">
+          <h2 className="font-extrabold text-2xl tracking-tight mb-6 text-slate-900 dark:text-white">
+            Recent Posts
           </h2>
-        ) : (
-          <div className="grid grid-cols-3 gap-5 rounded-md">
-            {filterPost.map((item, index) => {
-              const slug = item.slug || createSlug(item.title);
-              return (
-                <div
-                  key={index}
-                  className="shadow-[0_0_10px_rgb(50,50,50)] p-5 flex flex-col gap-2 rounded-md dark:shadow-[0_0_8px_rgb(250,250,250)]"
-                >
-                  <img
-                    src={item.image}
-                    alt=""
-                    className="w-full h-full object-cover rounded-md"
-                  />
-                  <Link to={`/blogDetails/${item.id}/${slug}`}>
-                    <h1 className="font-bold">{item.title}</h1>
-                  </Link>
-                  <p className="text-sm">
-                    {item.content.slice(0, 150)}...
-                  </p>
-                  <div className="flex items-end justify-between flex-row-reverse">
-                    <div className="flex items-center justify-start flex-row-reverse gap-2">
-                      <button
-                        onClick={() => deleteData(item.id)}
-                        className=" text-black rounded-md py-1 text-xl hover:text-red-700 duration-300 dark:text-white dark:hover:text-red-500"
+
+          {filterPost.length === 0 ? (
+            <div className="flex-1 flex flex-col items-center justify-center text-center text-slate-400 dark:text-gray-500 py-12">
+              <span className="text-4xl mb-2">📬</span>
+              <p className="text-lg font-medium">No active updates yet</p>
+              <p className="text-sm">
+                Your published content will appear inside this feed container
+                grid.
+              </p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+              {filterPost.map((item) => {
+                const slug =
+                  item.slug || (createSlug ? createSlug(item.title) : "");
+
+                return (
+                  <article
+                    key={item.id || item.title}
+                    className="flex flex-col bg-slate-50 dark:bg-gray-900/50 border border-slate-100 dark:border-gray-700 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-200"
+                  >
+                    {/* Cover Frame */}
+                    {item.image && (
+                      <div className="w-full h-44 overflow-hidden bg-slate-200 dark:bg-gray-800">
+                        <img
+                          src={item.image}
+                          alt=""
+                          className="w-full h-full object-cover hover:scale-103 transition-transform duration-300"
+                          loading="lazy"
+                        />
+                      </div>
+                    )}
+
+                    {/* Content Detail Layer */}
+                    <div className="p-4 flex flex-col flex-1 gap-3">
+                      <Link
+                        to={`/blogDetails/${item.id}/${slug}`}
+                        className="group"
                       >
-                        <BsTrash />
-                      </button>
-                      <button
-                        onClick={() => handleEdit(item)}
-                        className="text-black rounded-md py-1 text-xl hover:text-orange-500 duration-300 dark:text-white dark:hover:text-red-500"
-                      >
-                        <FaEdit />
-                      </button>
-                    </div>
-                    <div className="flex flex-col gap-2 items-start justify-between">
-                      <h2 className="text-sm font-bold">
-                        Author:{" "}
-                        <span className="font-normal">{item.username}</span>
-                      </h2>
-                      <p className="text-sm font-bold">
-                        CreatedAt:{" "}
-                        <span className="font-normal">{item.createdAt}</span>
+                        <h3 className="font-bold text-base text-slate-900 dark:text-white line-clamp-2 group-hover:text-blue-500 transition-colors">
+                          {item.title}
+                        </h3>
+                      </Link>
+
+                      <p className="text-xs text-slate-600 dark:text-gray-400 line-clamp-2 leading-relaxed flex-1">
+                        {item.content ? `${item.content.slice(0, 100)}...` : ""}
                       </p>
+
+                      {/* Grid Item Footer Actions */}
+                      <div className="pt-3 mt-1 border-t border-slate-200/60 dark:border-gray-700/60 flex items-center justify-between">
+                        <div className="text-[11px] text-slate-400 dark:text-gray-500">
+                          <p className="font-medium truncate max-w-[120px]">
+                            By {item.username || "You"}
+                          </p>
+                          <p>
+                            {item.createdAt
+                              ? new Date(item.createdAt).toLocaleDateString()
+                              : ""}
+                          </p>
+                        </div>
+
+                        {/* Interactive Tool Controls */}
+                        <div className="flex items-center gap-1">
+                          <button
+                            onClick={() => handleEdit(item)}
+                            title="Edit Post"
+                            className="p-2 text-slate-500 hover:text-orange-500 dark:text-gray-400 dark:hover:text-orange-400 rounded-lg hover:bg-slate-100 dark:hover:bg-gray-800 transition-all text-sm cursor-pointer"
+                          >
+                            <FaEdit />
+                          </button>
+                          <button
+                            onClick={() => deleteData(item.id)}
+                            title="Delete Post"
+                            className="p-2 text-slate-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400 rounded-lg hover:bg-slate-100 dark:hover:bg-gray-800 transition-all text-sm cursor-pointer"
+                          >
+                            <BsTrash />
+                          </button>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        )}
+                  </article>
+                );
+              })}
+            </div>
+          )}
+        </main>
       </div>
     </section>
   );
